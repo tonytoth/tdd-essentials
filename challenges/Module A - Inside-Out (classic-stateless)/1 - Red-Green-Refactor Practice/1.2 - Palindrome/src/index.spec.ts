@@ -8,7 +8,11 @@ describe('palindrome checker', () => {
 
     it('should have a method to check if a string is palindrome', () => {
         const palindromCheker = new PalindromeChecker();
-        console.log('palindromCheker: ', palindromCheker);
         expect(palindromCheker.checkIfIsAPalindrome).toBeDefined();
+    })
+
+    it('should be able to tell us that mom is a palindrome', () => {
+        const palindromCheker = new PalindromeChecker();
+        expect(palindromCheker.checkIfIsAPalindrome("mom")).toBeTruthy();
     })
 })

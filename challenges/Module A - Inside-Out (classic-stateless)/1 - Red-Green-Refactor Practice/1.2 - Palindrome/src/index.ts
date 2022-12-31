@@ -1,6 +1,6 @@
 export class PalindromeChecker {
-    checkIfIsAPalindrome() {
-
+    checkIfIsAPalindrome(input: string) {
+        return true;
     }
 }
 
