@@ -1,5 +1,15 @@
+interface Error {
+    type: string;
+    message?: string;
+}
+
+export interface ValidatedResponse {
+    success: boolean;
+    errors: Error[];
+}
+
 export class PasswordValidator {
-    validate (password: string) {
+    validate (password: string): ValidatedResponse {
         const passwordIsLessThen5 = password.length < 5;
         const passwordIsLongerThen15 = password.length > 15;
         const doesNotContainOneDigit = /\d/.test(password) === false;
@@ -8,13 +18,13 @@ export class PasswordValidator {
 
         if (passwordIsLessThen5 || passwordIsLongerThen15) {
             errors.push({
-                code: 'INVALID_LENGTH'
+                type: 'INVALID_LENGTH'
             })
         }
 
         if (doesNotContainOneDigit) {
             errors.push({
-                code: 'NO_DIGIT'
+                type: 'NO_DIGIT'
             })
         }
         

@@ -20,7 +20,7 @@ describe('password validator', () => {
 
         expect(result.success).toBeFalsy();
         expect(result.errors.length).toBeGreaterThanOrEqual(1);
-        expect(result.errors[0].code).toEqual('INVALID_LENGTH');
+        expect(result.errors[0].type).toEqual('INVALID_LENGTH');
     })
 
     it("should return an error object if the string doesn't have one digit and is less then 5", () => {
@@ -28,7 +28,7 @@ describe('password validator', () => {
 
         expect(result.success).toBeFalsy();
         expect(result.errors.length).toBeGreaterThanOrEqual(1);
-        expect(result.errors[1].code).toEqual('NO_DIGIT');
+        expect(result.errors[1].type).toEqual('NO_DIGIT');
     })
 
     it("should return an error object if te string is longer then 15 characters", () => {
@@ -36,7 +36,7 @@ describe('password validator', () => {
 
         expect(result.success).toBeFalsy();
         expect(result.errors.length).toBeGreaterThanOrEqual(1);
-        expect(result.errors[0].code).toEqual('INVALID_LENGTH');
+        expect(result.errors[0].type).toEqual('INVALID_LENGTH');
     })
 })
 
