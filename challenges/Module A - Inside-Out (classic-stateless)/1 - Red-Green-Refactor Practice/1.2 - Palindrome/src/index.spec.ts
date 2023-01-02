@@ -26,4 +26,8 @@ describe('palindrome checker', () => {
     it('should be able to tell us that Mom is a palindrome', () => {
         expect(palindromeChecker.checkIfIsAPalindrome("Mom")).toBeTruthy();
     })
+
+    it('should be able to tell us that Was It A Rat I Saw is a palindrome', () => {
+        expect(palindromeChecker.checkIfIsAPalindrome("Was It A Rat I Saw")).toBeTruthy();
+    })
 })
