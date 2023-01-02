@@ -30,5 +30,13 @@ describe('password validator', () => {
         expect(result.errors.length).toBeGreaterThanOrEqual(1);
         expect(result.errors[1].code).toEqual('NO_DIGIT');
     })
+
+    it("should return an error object if te string is longer then 15 characters", () => {
+        const result = passwordValidator.validate("momisherewithyou");
+
+        expect(result.success).toBeFalsy();
+        expect(result.errors.length).toBeGreaterThanOrEqual(1);
+        expect(result.errors[0].code).toEqual('INVALID_LENGTH');
+    })
 })
 
