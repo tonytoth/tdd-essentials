@@ -1,18 +1,21 @@
 import { PasswordValidator } from './';
 
 describe('password validator', () => {
+    let passwordValidator: PasswordValidator;
+
+    beforeEach(() => {
+        passwordValidator = new PasswordValidator();
+    })
+
     it('class should exist', () => {
         expect(PasswordValidator).toBeDefined()
     })
 
     it('should have a validaton method', () => {
-        const passwordValidator = new PasswordValidator();
         expect(passwordValidator.validate).toBeDefined();
     })
 
     it('should return an error object if the string is less then 5', () => {
-        const passwordValidator = new PasswordValidator();
-        
         const result = passwordValidator.validate("mom");
 
         expect(result.success).toBeFalsy();
@@ -20,8 +23,6 @@ describe('password validator', () => {
     })
 
     it("should return an error object if the string doesn't have one digit and is less then 5", () => {
-        const passwordValidator = new PasswordValidator();
-        
         const result = passwordValidator.validate("mom");
 
         expect(result.success).toBeFalsy();
