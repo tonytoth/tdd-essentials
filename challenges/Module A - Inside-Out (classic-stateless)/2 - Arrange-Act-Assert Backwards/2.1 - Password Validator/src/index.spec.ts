@@ -59,12 +59,19 @@ describe('password validator', () => {
 
         expect(result.success).toBeFalsy();
         expect(result.errors.length).toBeGreaterThanOrEqual(1);
-        
+
         expect(result.errors).toEqual(
             expect.arrayContaining([
                 { type: ErrorType.noUppercaseLetter }
             ])
         )
+    })
+
+    it("should return an success object if the string is passing all validation rules", () => {
+        const result = passwordValidator.validate("AnotherString1");
+
+        expect(result.success).toBeTruthy();
+        expect(result.errors.length).toBe(0);
     })
 })
 

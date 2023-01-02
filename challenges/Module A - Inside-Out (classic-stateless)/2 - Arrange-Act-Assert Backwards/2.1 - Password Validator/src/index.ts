@@ -15,7 +15,7 @@ export interface ValidatedResponse {
 }
 
 export class PasswordValidator {
-    validate (password: string): ValidatedResponse {
+    validate(password: string): ValidatedResponse {
         const passwordIsLessThen5 = password.length < 5;
         const passwordIsLongerThen15 = password.length > 15;
         const doesNotContainOneDigit = /\d/.test(password) === false;
@@ -42,7 +42,7 @@ export class PasswordValidator {
         }
         
         return {
-            success: false,
+            success: errors.length === 0,
             errors
         }
     }
