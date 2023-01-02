@@ -19,6 +19,7 @@ describe('password validator', () => {
         const result = passwordValidator.validate("mom");
 
         expect(result.success).toBeFalsy();
+        expect(result.errors.length).toBeGreaterThanOrEqual(1);
         expect(result.errors[0].code).toEqual('INVALID_LENGTH');
     })
 
@@ -26,6 +27,7 @@ describe('password validator', () => {
         const result = passwordValidator.validate("mom");
 
         expect(result.success).toBeFalsy();
+        expect(result.errors.length).toBeGreaterThanOrEqual(1);
         expect(result.errors[1].code).toEqual('NO_DIGIT');
     })
 })
