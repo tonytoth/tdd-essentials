@@ -18,5 +18,14 @@ describe('password validator', () => {
         expect(result.success).toBeFalsy();
         expect(result.errors[0].code).toEqual('INVALID_LENGTH');
     })
+
+    it("should return an error object if the string doesn't have one digit and is less then 5", () => {
+        const passwordValidator = new PasswordValidator();
+        
+        const result = passwordValidator.validate("mom");
+
+        expect(result.success).toBeFalsy();
+        expect(result.errors[1].code).toEqual('NO_DIGIT');
+    })
 })
 
