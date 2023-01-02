@@ -1,4 +1,4 @@
-import { PasswordValidator } from './';
+import { ErrorType, PasswordValidator } from './';
 
 describe('password validator', () => {
     let passwordValidator: PasswordValidator;
@@ -20,7 +20,12 @@ describe('password validator', () => {
 
         expect(result.success).toBeFalsy();
         expect(result.errors.length).toBeGreaterThanOrEqual(1);
-        expect(result.errors[0].type).toEqual('INVALID_LENGTH');
+
+        expect(result.errors).toEqual(
+            expect.arrayContaining([
+                { type: ErrorType.invalidLength }
+            ])
+        )
     })
 
     it("should return an error object if the string doesn't have one digit and is less then 5", () => {
@@ -28,7 +33,12 @@ describe('password validator', () => {
 
         expect(result.success).toBeFalsy();
         expect(result.errors.length).toBeGreaterThanOrEqual(1);
-        expect(result.errors[1].type).toEqual('NO_DIGIT');
+
+        expect(result.errors).toEqual(
+            expect.arrayContaining([
+                { type: ErrorType.noDigit }
+            ])
+        )
     })
 
     it("should return an error object if the string is longer then 15 characters", () => {
@@ -36,7 +46,12 @@ describe('password validator', () => {
 
         expect(result.success).toBeFalsy();
         expect(result.errors.length).toBeGreaterThanOrEqual(1);
-        expect(result.errors[0].type).toEqual('INVALID_LENGTH');
+        
+        expect(result.errors).toEqual(
+            expect.arrayContaining([
+                { type: ErrorType.invalidLength }
+            ])
+        )
     })
 
     it("should return an error object if the string does not contain one upper case letter", () => {
@@ -44,7 +59,12 @@ describe('password validator', () => {
 
         expect(result.success).toBeFalsy();
         expect(result.errors.length).toBeGreaterThanOrEqual(1);
-        expect(result.errors[1].type).toEqual('NO_UPPERCASE_LETTER');
+        
+        expect(result.errors).toEqual(
+            expect.arrayContaining([
+                { type: ErrorType.noUppercaseLetter }
+            ])
+        )
     })
 })
 

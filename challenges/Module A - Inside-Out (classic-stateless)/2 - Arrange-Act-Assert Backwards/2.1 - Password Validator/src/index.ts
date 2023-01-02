@@ -1,3 +1,9 @@
+export enum ErrorType {
+    invalidLength = "INVALID_LENGTH",
+    noDigit = "NO_DIGIT",
+    noUppercaseLetter = "NO_UPPERCASE_LETTER"
+}
+
 interface Error {
     type: string;
     message?: string;
@@ -13,25 +19,25 @@ export class PasswordValidator {
         const passwordIsLessThen5 = password.length < 5;
         const passwordIsLongerThen15 = password.length > 15;
         const doesNotContainOneDigit = /\d/.test(password) === false;
-        const doesContainUppercaseLetter = /[A-Z]/.test(password) == false;
+        const doesNotContainUppercaseLetter = /[A-Z]/.test(password) == false;
 
         const errors = [];
 
         if (passwordIsLessThen5 || passwordIsLongerThen15) {
             errors.push({
-                type: 'INVALID_LENGTH'
+                type: ErrorType.invalidLength
             })
         }
 
         if (doesNotContainOneDigit) {
             errors.push({
-                type: 'NO_DIGIT'
+                type: ErrorType.noDigit
             })
         }
 
-        if (doesContainUppercaseLetter) {
+        if (doesNotContainUppercaseLetter) {
             errors.push({
-                type: 'NO_UPPERCASE_LETTER'
+                type: ErrorType.noUppercaseLetter
             })    
         }
         
