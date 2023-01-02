@@ -1,6 +1,6 @@
 export class PalindromeChecker {
     checkIfIsAPalindrome(input: string) {
-        return true;
+        return input.split("").reverse().join("") === input;
     }
 }
 
