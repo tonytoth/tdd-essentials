@@ -13,6 +13,7 @@ export class PasswordValidator {
         const passwordIsLessThen5 = password.length < 5;
         const passwordIsLongerThen15 = password.length > 15;
         const doesNotContainOneDigit = /\d/.test(password) === false;
+        const doesContainUppercaseLetter = /[A-Z]/.test(password) == false;
 
         const errors = [];
 
@@ -26,6 +27,12 @@ export class PasswordValidator {
             errors.push({
                 type: 'NO_DIGIT'
             })
+        }
+
+        if (doesContainUppercaseLetter) {
+            errors.push({
+                type: 'NO_UPPERCASE_LETTER'
+            })    
         }
         
         return {

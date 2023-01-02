@@ -31,12 +31,20 @@ describe('password validator', () => {
         expect(result.errors[1].type).toEqual('NO_DIGIT');
     })
 
-    it("should return an error object if te string is longer then 15 characters", () => {
+    it("should return an error object if the string is longer then 15 characters", () => {
         const result = passwordValidator.validate("momisherewithyou");
 
         expect(result.success).toBeFalsy();
         expect(result.errors.length).toBeGreaterThanOrEqual(1);
         expect(result.errors[0].type).toEqual('INVALID_LENGTH');
+    })
+
+    it("should return an error object if the string does not contain one upper case letter", () => {
+        const result = passwordValidator.validate("anotherstring");
+
+        expect(result.success).toBeFalsy();
+        expect(result.errors.length).toBeGreaterThanOrEqual(1);
+        expect(result.errors[1].type).toEqual('NO_UPPERCASE_LETTER');
     })
 })
 
