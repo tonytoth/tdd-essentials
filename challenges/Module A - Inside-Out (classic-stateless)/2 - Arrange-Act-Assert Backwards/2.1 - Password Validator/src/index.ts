@@ -41,8 +41,10 @@ export class PasswordValidator {
             })    
         }
         
+        const thereAreNoErrors = errors.length === 0;
+
         return {
-            success: errors.length === 0,
+            success: thereAreNoErrors,
             errors
         }
     }
