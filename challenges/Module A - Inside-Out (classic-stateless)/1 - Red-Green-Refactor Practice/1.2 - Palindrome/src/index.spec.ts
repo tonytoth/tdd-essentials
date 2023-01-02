@@ -7,7 +7,7 @@ describe('palindrome checker', () => {
         palindromeChecker = new PalindromeChecker();
     })
 
-    it('class should exist', () => {
+    it('palindrome checker should exist', () => {
         expect(palindromeChecker).toBeDefined();
     })
 
