@@ -9,5 +9,14 @@ describe('password validator', () => {
         const passwordValidator = new PasswordValidator();
         expect(passwordValidator.validate).toBeDefined();
     })
+
+    it('should return an error object if the string is less then 5', () => {
+        const passwordValidator = new PasswordValidator();
+        
+        const result = passwordValidator.validate("mom");
+
+        expect(result.success).toBeFalsy();
+        expect(result.errors[0].code).toEqual('INVALID_LENGTH');
+    })
 })
 

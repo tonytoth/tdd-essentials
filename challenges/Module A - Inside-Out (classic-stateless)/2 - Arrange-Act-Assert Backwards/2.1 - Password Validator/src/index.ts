@@ -1,5 +1,12 @@
 export class PasswordValidator {
-    validate () {
-
+    validate (password: string) {
+        return {
+            success: false,
+            errors: [
+                {
+                    code: 'INVALID_LENGTH'
+                }
+            ]
+        }
     }
 }
