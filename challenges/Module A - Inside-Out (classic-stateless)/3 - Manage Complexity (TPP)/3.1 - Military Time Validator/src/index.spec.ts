@@ -18,4 +18,8 @@ describe('military time validator', () => {
     it('should be able to tell us that "01:12 - 14:32" is a valid military time', () => {
         expect(militaryTimeValidator.validate("01:12 - 14:32")).toBeTruthy();
     })
+
+    it('should be able to tell us that "25:00 - 12:23" is not a valid military time', () => {
+        expect(militaryTimeValidator.validate("25:00 - 12:23")).toBeFalsy();
+    })
 })
