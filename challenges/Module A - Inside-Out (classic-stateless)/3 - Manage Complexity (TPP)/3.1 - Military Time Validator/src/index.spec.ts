@@ -15,11 +15,15 @@ describe('military time validator', () => {
         expect(militaryTimeValidator.validate).toBeDefined();
     })
 
-    it('should be able to tell us that "01:12 - 14:32" is a valid military time', () => {
+    it('should be able to tell us that "01:12 - 14:32" is a valid military time range', () => {
         expect(militaryTimeValidator.validate("01:12 - 14:32")).toBeTruthy();
     })
 
-    it('should be able to tell us that "25:00 - 12:23" is not a valid military time', () => {
+    it('should be able to tell us that "25:00 - 12:23" is not a valid military time range', () => {
         expect(militaryTimeValidator.validate("25:00 - 12:23")).toBeFalsy();
+    })
+
+    it('should be able to tell us that an empty string is not a valid military time range', () => {
+        expect(militaryTimeValidator.validate("")).toBeFalsy();
     })
 })
