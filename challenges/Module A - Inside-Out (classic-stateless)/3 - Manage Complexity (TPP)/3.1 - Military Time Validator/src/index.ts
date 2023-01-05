@@ -1,5 +1,5 @@
 export class MilitaryTimeValidator {
-    validate() {
-        
+    validate(time: string) {
+        return true;
     }
 }
