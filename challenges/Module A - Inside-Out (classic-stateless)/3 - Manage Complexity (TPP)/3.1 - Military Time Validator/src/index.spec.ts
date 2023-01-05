@@ -1,5 +1,8 @@
 
-describe('military time validator', () => {
 
+describe('military time validator', () => {
+    it('should exist', () => {
+        const militaryTimeValidator = new MilitaryTimeValidator();
+    })
 
 })
